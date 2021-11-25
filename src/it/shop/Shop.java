@@ -9,8 +9,9 @@ public class Shop {
 	private String nome;
 	private String descrizione;
 	private int prezzo;
+	private int prezzoPieno;
 	private int iva;
-	private String nome_codice;
+	private String nomePiuCodice;
 	
 	
 	
@@ -18,21 +19,19 @@ public class Shop {
 	public Shop(){
 		this.codice=generaCodice();
 		this.prezzo=prezzoSenzaIva();
-		this.iva=prezzoConIva();
-		this.nome=nomeProdotto(nome);
-		this.nome_codice=nomePiuCodice(nome);
+		this.prezzoPieno=prezzoConIva();
+		this.nome=getNome();
+		this.nomePiuCodice=nome_codice();
+		this.descrizione=getDescrizione();
+		this.iva=getIva();
+		
 		
 		
 	}
 	
 	//get set
-	public String getNome_Codice() {
-		return nome_codice;
-	}
-	public void setNome_Codice(String nome_codice) {
-		this.nome_codice = nome_codice;
-	}
 	
+
 	public String getNome() {
 		return nome;
 	}
@@ -55,7 +54,14 @@ public class Shop {
 
 	public void setPrezzo(int prezzo) {
 		this.prezzo = prezzo;
-		
+	}
+
+	public int getPrezzoPieno() {
+		return prezzoPieno;
+	}
+
+	public void setPrezzoPieno(int prezzoPieno) {
+		this.prezzoPieno = prezzoPieno;
 	}
 
 	public int getIva() {
@@ -64,13 +70,20 @@ public class Shop {
 
 	public void setIva(int iva) {
 		this.iva = iva;
-		
+	}
+
+	public String getNomePiuCodice() {
+		return nomePiuCodice;
+	}
+
+	public void setNomePiuCodice(String nomePiuCodice) {
+		this.nomePiuCodice = nomePiuCodice;
 	}
 
 	public int getCodice() {
 		return codice;
 	}
-	
+
 	//Metodi
 	private int generaCodice(){
 		
@@ -91,16 +104,12 @@ public class Shop {
 		return prezzoIva;
 	}
 	//metodo per avere il nome
-
-	private String nomeProdotto(String nomeProdotto) {
-		nomeProdotto="";
-		return nomeProdotto;
-	}
-	private String nomePiuCodice(String nomeProdotto) {
-		
-		String nomeEsteso=nomeProdotto+codice;
-		return nomeEsteso;
-	}
 	
+
 	//metodo per avere il nome esteso  concatenando codice
+	private String nome_codice() {
+		String nome_codice;
+		nome_codice=nome+codice;
+		return nome_codice;
+	}
 }
