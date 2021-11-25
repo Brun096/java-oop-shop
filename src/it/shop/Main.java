@@ -7,11 +7,12 @@ public class Main {
 		Shop shop=new Shop();
 		
 		
+		System.out.println(shop.getNome());
 		System.out.println("il codice è: "+shop.getCodice());
-		System.out.println("il nome è "+shop.getNome());
-		System.out.println("il prezzo senza iva è "+shop.getPrezzo());
-		System.out.println("il prezzo pieno è di "+shop.getIva());
-		System.out.println(("il nome esteso del prodotto è "+shop.getNome_Codice()));
+		System.out.println("il prezzo senza iva è: "+shop.getPrezzo());
+		System.out.println("prezzo con iva "+shop.getPrezzoPieno());
+		System.out.println("descrizione del prodotto: "+shop.getDescrizione());
+		System.out.println("il codice-nome del prodotto è: "+shop.getNomePiuCodice());
 	}
 
 }
