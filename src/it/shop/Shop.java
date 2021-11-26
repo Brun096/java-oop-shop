@@ -9,28 +9,33 @@ public class Shop {
 	private String nome;
 	private String descrizione;
 	private int prezzo;
-	private int prezzoPieno;
 	private int iva;
-	private String nomePiuCodice;
+	
 	
 	
 	
 	//Costruttori
 	public Shop(){
 		this.codice=generaCodice();
-		this.prezzo=prezzoSenzaIva();
-		this.prezzoPieno=prezzoConIva();
-		this.nome=getNome();
-		this.nomePiuCodice=nome_codice();
-		this.descrizione=getDescrizione();
+		this.prezzo=getPrezzo();
 		this.iva=getIva();
 		
 		
 		
 	}
 	
+
 	//get set
 	
+
+	public Shop(String nome, String descrizione, int prezzo, int iva) {
+		this.codice=generaCodice();
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.prezzo = prezzo;
+		this.iva = iva;
+	}
+
 
 	public String getNome() {
 		return nome;
@@ -40,6 +45,10 @@ public class Shop {
 		this.nome = nome;
 	}
 
+	public String getNomeEsteso() {
+		String nomeEsteso=nome+codice;
+		return nomeEsteso;
+	}
 	public String getDescrizione() {
 		return descrizione;
 	}
@@ -47,7 +56,13 @@ public class Shop {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-
+	//metodo per il prezzo ivato
+	public int getPrezzoivato() {
+		int prezzoIvato=prezzo+((prezzo*iva)/100);
+		return prezzoIvato;
+	}
+	
+	
 	public int getPrezzo() {
 		return prezzo;
 	}
@@ -56,13 +71,8 @@ public class Shop {
 		this.prezzo = prezzo;
 	}
 
-	public int getPrezzoPieno() {
-		return prezzoPieno;
-	}
+	
 
-	public void setPrezzoPieno(int prezzoPieno) {
-		this.prezzoPieno = prezzoPieno;
-	}
 
 	public int getIva() {
 		return iva;
@@ -72,44 +82,19 @@ public class Shop {
 		this.iva = iva;
 	}
 
-	public String getNomePiuCodice() {
-		return nomePiuCodice;
-	}
+	
 
-	public void setNomePiuCodice(String nomePiuCodice) {
-		this.nomePiuCodice = nomePiuCodice;
-	}
+	
 
 	public int getCodice() {
 		return codice;
 	}
 
-	//Metodi
+	//Metodo genera codice
 	private int generaCodice(){
 		
 		Random random=new Random();
 		codice=random.nextInt(1000);
 		return codice;
-	}
-	//metodo per avere il prezzo base 
-
-	private int prezzoSenzaIva() {
-		int prezzoSenzaIva=prezzo;
-		return prezzoSenzaIva;
-	}
-	//metodo per avere il prezzo con iva
-	
-	private int prezzoConIva() {
-		int prezzoIva=prezzo+((prezzo*iva)/100);
-		return prezzoIva;
-	}
-	//metodo per avere il nome
-	
-
-	//metodo per avere il nome esteso  concatenando codice
-	private String nome_codice() {
-		String nome_codice;
-		nome_codice=nome+codice;
-		return nome_codice;
 	}
 }
